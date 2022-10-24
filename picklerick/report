@@ -1,0 +1,36 @@
+This scan was created on Sun 23 Oct 2022 07:49:37 PM EDT
+Results for nmap:
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-23 19:48 EDT
+Nmap scan report for 10.10.226.235
+Host is up (0.11s latency).
+Not shown: 998 closed tcp ports (conn-refused)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 9.43 seconds
+Results for dirsearch:
+http://10.10.226.235/.ht_wsr.txt
+http://10.10.226.235/.htaccess.bak1
+http://10.10.226.235/.htaccess.orig
+http://10.10.226.235/.htaccess.save
+http://10.10.226.235/.htaccess.sample
+http://10.10.226.235/.htaccess_orig
+http://10.10.226.235/.htaccess_sc
+http://10.10.226.235/.htaccess_extra
+http://10.10.226.235/.htaccessBAK
+http://10.10.226.235/.htaccessOLD
+http://10.10.226.235/.htaccessOLD2
+http://10.10.226.235/.htm
+http://10.10.226.235/.html
+http://10.10.226.235/.htpasswds
+http://10.10.226.235/.htpasswd_test
+http://10.10.226.235/.httr-oauth
+http://10.10.226.235/.php
+http://10.10.226.235/.php3
+http://10.10.226.235/assets
+http://10.10.226.235/assets/
+http://10.10.226.235/login.php
+http://10.10.226.235/robots.txt
+http://10.10.226.235/server-status
+http://10.10.226.235/server-status/
