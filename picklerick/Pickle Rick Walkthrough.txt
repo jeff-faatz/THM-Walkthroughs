@@ -1,6 +1,6 @@
 This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle.
 
-I started with a scan of the IP using a custom script that runs nmap and dirsearch. (Report included)
+I started with a scan of the IP using a custom script I wrote that runs nmap and dirsearch. (Scripts and Report included)
 
 Nmap showed that there were 2 ports open.
     22 SSH
