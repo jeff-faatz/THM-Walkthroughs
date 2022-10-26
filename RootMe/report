@@ -1,0 +1,38 @@
+This scan was created on Tue 25 Oct 2022 08:02:56 PM EDT
+Results for nmap:
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-25 20:01 EDT
+Nmap scan report for 10.10.224.76
+Host is up (0.11s latency).
+Not shown: 998 closed tcp ports (conn-refused)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 7.35 seconds
+Results for dirsearch:
+http://10.10.224.76/js
+http://10.10.224.76/.ht_wsr.txt
+http://10.10.224.76/.htaccess.bak1
+http://10.10.224.76/.htaccess.sample
+http://10.10.224.76/.htaccess.orig
+http://10.10.224.76/.htaccess_extra
+http://10.10.224.76/.htaccess.save
+http://10.10.224.76/.htaccess_orig
+http://10.10.224.76/.htaccess_sc
+http://10.10.224.76/.htaccessOLD2
+http://10.10.224.76/.htaccessBAK
+http://10.10.224.76/.htaccessOLD
+http://10.10.224.76/.htm
+http://10.10.224.76/.html
+http://10.10.224.76/.htpasswds
+http://10.10.224.76/.htpasswd_test
+http://10.10.224.76/.httr-oauth
+http://10.10.224.76/.php
+http://10.10.224.76/css
+http://10.10.224.76/js/
+http://10.10.224.76/panel
+http://10.10.224.76/panel/
+http://10.10.224.76/server-status/
+http://10.10.224.76/server-status
+http://10.10.224.76/uploads
+http://10.10.224.76/uploads/
