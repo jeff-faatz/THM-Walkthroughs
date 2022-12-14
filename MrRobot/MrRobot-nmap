@@ -1,0 +1,18 @@
+# Nmap 7.93 scan initiated Sun Nov 13 20:15:50 2022 as: nmap -T4 -p- -A -oN /home/jeff/machines/MrRobot/MrRobot 10.10.173.200
+Nmap scan report for 10.10.173.200
+Host is up (0.11s latency).
+Not shown: 65532 filtered tcp ports (no-response)
+PORT    STATE  SERVICE  VERSION
+22/tcp  closed ssh
+80/tcp  open   http     Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn't have a title (text/html).
+443/tcp open   ssl/http Apache httpd
+| ssl-cert: Subject: commonName=www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+|_http-server-header: Apache
+|_http-title: Site doesn't have a title (text/html).
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Nov 13 20:19:52 2022 -- 1 IP address (1 host up) scanned in 242.74 seconds

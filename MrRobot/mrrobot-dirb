@@ -1,0 +1,87 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /home/jeff/machines/MrRobot/mrrobot-dirb
+START_TIME: Sun Nov 13 20:21:48 2022
+URL_BASE: http://10.10.173.200/
+WORDLIST_FILES: /usr/share/wordlists/dirb/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://10.10.173.200/ ----
+==> DIRECTORY: http://10.10.173.200/0/
+==> DIRECTORY: http://10.10.173.200/admin/
++ http://10.10.173.200/atom (CODE:301|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/audio/
+==> DIRECTORY: http://10.10.173.200/blog/
+==> DIRECTORY: http://10.10.173.200/css/
++ http://10.10.173.200/dashboard (CODE:302|SIZE:0)
++ http://10.10.173.200/favicon.ico (CODE:200|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/feed/
+==> DIRECTORY: http://10.10.173.200/image/
+==> DIRECTORY: http://10.10.173.200/Image/
+==> DIRECTORY: http://10.10.173.200/images/
++ http://10.10.173.200/index.html (CODE:200|SIZE:1077)
++ http://10.10.173.200/index.php (CODE:301|SIZE:0)
++ http://10.10.173.200/intro (CODE:200|SIZE:516314)
+==> DIRECTORY: http://10.10.173.200/js/
++ http://10.10.173.200/license (CODE:200|SIZE:309)
++ http://10.10.173.200/login (CODE:302|SIZE:0)
++ http://10.10.173.200/page1 (CODE:301|SIZE:0)
++ http://10.10.173.200/phpmyadmin (CODE:403|SIZE:94)
++ http://10.10.173.200/rdf (CODE:301|SIZE:0)
++ http://10.10.173.200/readme (CODE:200|SIZE:64)
++ http://10.10.173.200/robots (CODE:200|SIZE:41)
++ http://10.10.173.200/robots.txt (CODE:200|SIZE:41)
++ http://10.10.173.200/rss (CODE:301|SIZE:0)
++ http://10.10.173.200/rss2 (CODE:301|SIZE:0)
++ http://10.10.173.200/sitemap (CODE:200|SIZE:0)
++ http://10.10.173.200/sitemap.xml (CODE:200|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/video/
+==> DIRECTORY: http://10.10.173.200/wp-admin/
++ http://10.10.173.200/wp-config (CODE:200|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/wp-content/
++ http://10.10.173.200/wp-cron (CODE:200|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/wp-includes/
++ http://10.10.173.200/wp-links-opml (CODE:200|SIZE:227)
++ http://10.10.173.200/wp-load (CODE:200|SIZE:0)
++ http://10.10.173.200/wp-login (CODE:200|SIZE:2671)
++ http://10.10.173.200/wp-mail (CODE:500|SIZE:3064)
++ http://10.10.173.200/wp-settings (CODE:500|SIZE:0)
++ http://10.10.173.200/wp-signup (CODE:302|SIZE:0)
++ http://10.10.173.200/xmlrpc (CODE:405|SIZE:42)
++ http://10.10.173.200/xmlrpc.php (CODE:405|SIZE:42)
+
+---- Entering directory: http://10.10.173.200/0/ ----
++ http://10.10.173.200/0/atom (CODE:301|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/0/feed/
++ http://10.10.173.200/0/index.php (CODE:301|SIZE:0)
++ http://10.10.173.200/0/rdf (CODE:301|SIZE:0)
++ http://10.10.173.200/0/rss (CODE:301|SIZE:0)
++ http://10.10.173.200/0/rss2 (CODE:301|SIZE:0)
+
+---- Entering directory: http://10.10.173.200/admin/ ----
++ http://10.10.173.200/admin/atom (CODE:301|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/admin/audio/
+==> DIRECTORY: http://10.10.173.200/admin/css/
+==> DIRECTORY: http://10.10.173.200/admin/feed/
+==> DIRECTORY: http://10.10.173.200/admin/images/
++ http://10.10.173.200/admin/index (CODE:200|SIZE:1077)
++ http://10.10.173.200/admin/index.html (CODE:200|SIZE:1188)
++ http://10.10.173.200/admin/index.php (CODE:301|SIZE:0)
++ http://10.10.173.200/admin/intro (CODE:200|SIZE:516314)
+==> DIRECTORY: http://10.10.173.200/admin/js/
++ http://10.10.173.200/admin/rdf (CODE:301|SIZE:0)
++ http://10.10.173.200/admin/robot (CODE:200|SIZE:30178875)
++ http://10.10.173.200/admin/robots (CODE:200|SIZE:43)
++ http://10.10.173.200/admin/robots.txt (CODE:200|SIZE:43)
++ http://10.10.173.200/admin/rss (CODE:301|SIZE:0)
++ http://10.10.173.200/admin/rss2 (CODE:301|SIZE:0)
+==> DIRECTORY: http://10.10.173.200/admin/video/
+
+---- Entering directory: http://10.10.173.200/audio/ ----
